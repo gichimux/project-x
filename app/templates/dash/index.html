@@ -1,0 +1,33 @@
+{% load bootstrap3 %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		
+	</head>
+	<body>
+
+
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+ 
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search location" name="location">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit">search</button>
+            </div>
+          </div>
+
+        </form>
+        <button><a href="{% url 'admin_index'%}">Admin demo</a></button>
+        <button><a href="{% url 'user_index'%}">User demo</a></button>
+		
+		<button><a href="{% url 'add_location'%}">Add Location</a></button>
+
+		<button ><a href="{% url 'add_customer' %}">customer bills</a></button>
+		<button ><a href="{% url 'all_customers' %}">all customers</a></button>
+		{% for location in locations %}
+		<a href="{% url 'customer_in_location' location.pk %}">
+		{{location.house_name}}</a>
+
+		{% endfor %}
+	</body>
+</html>

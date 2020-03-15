@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>all customers</title>
+</head>
+<body>
+	{% for customer in all_customers%}
+		<p>{{customer.first_name}} - {{customer.last_name}}-{{units}} </p>
+		<a href="{% url 'single_customer' customer.pk %}">link</a>
+	 {% empty %}
+	{% endfor %}
+</body>
+</html>

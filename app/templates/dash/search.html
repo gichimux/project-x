@@ -1,0 +1,32 @@
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>searched stuff</title>
+</head>
+<body>
+<div class="container">
+<br><br>
+  <div class="row">
+    {% if locations%}
+      <h2>Found {{ locations|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 locations for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if locations %}
+    {% for location in locations %}
+      <div class="col-sm-6 col-md-3">
+         <a href= "{% url 'customer_in_location' location.pk %}"> <h1>{{location.house_name}}</h1></a>
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
