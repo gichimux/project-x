@@ -16,34 +16,36 @@ class Product(models.Model):
 	product_name = models.CharField(max_length= 12)
 	product_price_per_unit = models.PositiveIntegerField(default=0)
 	# units_sold = models.PositiveIntegerField(default=0)
+	
+	def save_product(self):
+		self.save()
+
+	def delete_product(self):
+		self.delete()
+
 	@classmethod
 	def fetch_single_product(cls, product):
 		product = cls.objects.get(id=product)
 		return product
 
-class Meter_Reading(models.Model):
-	previous_reading = models.PositiveIntegerField(default=0)
-	current_reading = models.PositiveIntegerField(default=0)
-	date_read = models.DateTimeField(null=True, default=timezone.now)
 
-	
-	# def units_used(self):
-	# 	return Meter_Reading.objects.all().annotate(reading_gte=F('previous_reading') - F('current_reading'))
-		
 
-# class Receipt(models.Model):
-# 	pass
+# # class Receipt(models.Model):
+# # 	pass
 	
 
 class Location(models.Model):
-	house_name = models.CharField(max_length= 10)
-	zone = models.CharField(max_length= 10)
+	zone  = models.CharField(max_length= 10)
 	court = models.CharField(max_length= 10)
-	house_number = models.PositiveIntegerField(default=0)
-	meter_reading = models.ForeignKey(Meter_Reading,on_delete=models.CASCADE)
-	
-	class Meta:
-		ordering = ['-id']
+	house_name = models.CharField(max_length= 10)
+	# house_number = models.PositiveIntegerField(default=0)
+	# initial_reading = models.PositiveIntegerField(default=0)
+	# current_reading = models.PositiveIntegerField(default=0)
+	# units_consumed = models.PositiveIntegerField(default=0)
+	# date_read = models.DateTimeField(null=True, default=timezone.now)
+
+	# class Meta:
+	# 	ordering = ['-id']
     
 	def __str__(self):
 		return self.house_name 
@@ -64,12 +66,14 @@ class Location(models.Model):
 		location = cls.objects.filter(house_name__icontains=search_term)
 		return location
 
+	
+
 # Create your models here.
 class Customer(models.Model):
     first_name = models.CharField(max_length= 10)
     last_name = models.CharField(max_length= 10)
     contact = models.PositiveIntegerField(default=0)
-    location = models.ForeignKey(Location,on_delete=models.CASCADE, default=DEFAULT_LOCATION_ID )
+    location = models.ForeignKey(Location,on_delete=models.CASCADE )
     product = models.ForeignKey(Product,on_delete=models.CASCADE, default=DEFAULT_PRODUCT_ID )
     payment_status = models.BooleanField(default = False)
     # meter_reading = models.ForeignKey('Meter_Reading',default=0)
@@ -104,17 +108,35 @@ class Customer(models.Model):
     	single_customer = cls.objects.get(id=single_customer)
     	return single_customer
 
+class Meter_Reading(models.Model):
+	customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID)
+	# location = models.ForeignKey(Location, on_delete=models.CASCADE, default=DEFAULT_LOCATION_ID)
+	previous_reading = models.PositiveIntegerField(default=0)
+	current_reading = models.PositiveIntegerField(default=0)
+	date_read = models.DateTimeField(null=True, default=timezone.now)
 
-class Payment(models.Model):
-	product = models.ForeignKey(Product,on_delete=models.CASCADE)
-	product_units_sold = models.PositiveIntegerField(default=0)
+	class Meta:
+		ordering = ['-id']
+		
+	def save_reading(self):
+		self.save()
+
+	def delete_reading(self):
+		self.delete()
+
+	def units_used(self):
+		self.current_reading - self.previous_reading
+
+class Product_details(models.Model):
+	product_name = models.CharField(max_length=10)
+	product_price = models.PositiveIntegerField(default=0)
 	amount_paid = models.PositiveIntegerField(default=0)
 	customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=DEFAULT_CUSTOMER_ID )
 
 
 
 class Payment_Invoice(models.Model):
-	payment = models.ForeignKey(Payment,on_delete=models.CASCADE)
+	# payment = models.ForeignKey(Payment,on_delete=models.CASCADE)
 	date = models.DateTimeField(null=True, default=timezone.now)
 
 	 

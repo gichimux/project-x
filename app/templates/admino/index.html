@@ -1,0 +1,133 @@
+{% extends 'admino/base.html' %}
+{% load static %}
+{% block content%}
+
+        <!-- Begin Page Content -->
+        
+          <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h5 mb-0 text-gray-800 text-center">Leshans Water Supplies</h1> <hr>
+                
+                          
+                  </div>
+
+
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- projects completed -->
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a href="{% url 'homes_connected' %}">
+              <div class="card border-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Homes connected</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">400</div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+        
+
+          <!-- <a href="">         -->
+           <div class="col-xl-3 col-md-6 mb-4">
+          <a href="{% url 'units_consumed' %}">
+              <div class="card border-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Water Units Consumed</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">1400</div>
+                    </div>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+       
+
+            <!-- projects in progress-->
+            
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a href="{% url 'revenue_manager' %}">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Revenue Management</div>
+                      
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-500"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+          
+
+
+            <!-- Total spent -->
+            
+           <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{% url 'meter_readings' %}">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Meter Readings</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-500"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+         
+        
+        
+
+
+          <!-- Content Row -->
+
+         
+              </div>
+
+               <div class="text-center">
+                   <a href="{% url 'location_readings'%}" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-90">
+                      <i class="fas fa-eye"></i>
+                    </span>
+                    <span class="text">View transactions</span>
+                  </a> 
+                </div><br>
+</div>
+                 
+{% endblock %}
+ 

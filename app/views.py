@@ -21,12 +21,12 @@ def demo_location_index(request):
 def demo_client_index(request):
 	return render(request,'user/client_management/client_index.html' )
 
-# ============== ADMIN ===========
+# # ============== ADMIN ===========
 def demo_admin_index(request):
-	return render(request,'admin/index.html' )
+	return render(request,'admino/index.html' )
 
 
-#########################################
+# #########################################
 
 @login_required(login_url='/accounts/login/')
 def user_dash(request):
@@ -75,32 +75,131 @@ def search_results(request):
 
 @login_required(login_url='/accounts/login/')
 def customer_in_location(request,id):
-	customers = Customer.objects.filter(location=id)
 	locations = Location.objects.get(id=id)
-	meter_reading = Meter_Reading.objects.get(id=id)
-	x = meter_reading.current_reading-meter_reading.previous_reading
-	# units_used = meter_reading.units_used()
+	customers = Customer.objects.filter(location=id)
+	# meter_reading = Meter_Reading.objects.get(id=id)
+	# x = meter_reading.units_used()
 	if request.method == 'POST':
 		form = Meter_Reading_Form(request.POST, request.FILES)
 		if form.is_valid():
-			current_reading = form.cleaned_data['current_reading']
-			add_reading = meter_reading(current_reading = current_reading)
-			add_reading=form.save()
-			add_reading.save
+			add_reading=form.save(commit=False)
+			# x = add_reading.current_reading - add_reading.initial_reading
+			add_reading.customer = customers
+			# add_reading.units_consumed +=x
+			# add_reading.location = locations
+			add_reading.save()
 			
-		return redirect ('user_dash')
+			return redirect ('user_dash')
 	else:
-		form = Meter_Reading_Form()
-	return render(request, 'dash/customer_in_location.html', {"customers":customers,"locations":locations, "units_used": x, "form": form})
+		form = Location_Meter_Form()
+	return render(request, 'dash/customer_in_location.html', {"customers":customers,"locations":locations, "form": form})
 
 @login_required(login_url='/accounts/login/')
 def add_location(request):
 	if request.method == 'POST':
 		form = Location_Form(request.POST, request.FILES)
 		if form.is_valid():
-			add_location = form.save()
+			add_location = form.save(commit=False)
 			add_location.save()
 		return redirect ('user_dash')
 	else:
 		form = Location_Form()
 	return render (request, 'dash/add_location.html', {"form":form})
+
+	######################## new views ################################3
+
+@login_required(login_url='/accounts/login/')
+def all_locations(request):
+    locations = Location.objects.all()
+    if request.method == 'POST':
+        form = New_Location(request.POST, request.FILES)
+        if form.is_valid():
+            location=form.save(commit=False)
+            location.save() 
+            return redirect(all_locations)
+    else:
+        form =NewDistributor()
+    return render(request,'user/location_management/location_index.html',{'locations':location,'form':form})
+
+@login_required(login_url='/accounts/login/')
+def single_location(request,id):
+    location = Location.objects.get(id=id)
+    customers = Customer.objects.filter(location=id)
+    if request.method == 'POST':
+        form = New_Customer(request.POST, request.FILES)
+        if form.is_valid():
+            customer=form.save(commit=False)
+            customer.location = location
+            customer.save() 
+            return redirect(single_locations)
+    else:
+        form =New_Customer()
+    return render(request,'user/location_management/single_location.html',{'house':house,'categories':categories})
+
+
+@login_required(login_url='/accounts/login/')
+def all_customers(request):
+	all_customers = Customer.fetch_all_customers()
+	return render(request, 'client_management/client_index.html',{"all_customers": all_customers})
+
+@login_required(login_url='/accounts/login/')
+def single_customer(request, id):
+	customer = Customer.objects.get(id=id)
+	meter_readings = Meter_Reading.objects.filter(customer=id)
+	if request.method == 'POST':
+		form = Meter_Reading_Form(request.POST, request.FILES)
+		if form.is_valid():
+			reading=form.save(commit=False)
+			reading.customer = customer
+			customer.save()
+			return redirect(single_customer)
+		else:
+			form =Meter_Reading_Form()
+	return render(request, 'client_management/single_customer.html',{"all_customers": all_customers})
+
+@login_required(login_url='/accounts/login/')
+def paid_bills(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'user/bill_management/paid.html',{})
+
+@login_required(login_url='/accounts/login/')
+def pending_bills(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'user/bill_management/pending.html',{})
+
+@login_required(login_url='/accounts/login/')
+def single_location(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'user/location_management/single_location.html',{})
+
+@login_required(login_url='/accounts/login/')
+def location_readings(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'user/location_management/location_readings.html',{})
+
+@login_required(login_url='/accounts/login/')
+def locations_pending(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'user/location_management/locations_pending.html',{})
+
+############ADMIN VIEWS################
+
+@login_required(login_url='/accounts/login/')
+def homes_connected(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'admino/customer_management/customer_index.html',{})
+
+@login_required(login_url='/accounts/login/')
+def units_consumed(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'admino/units_management/units_index.html',{})
+
+@login_required(login_url='/accounts/login/')
+def meter_readings(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'admino/meter_readings/meter_readings_index.html',{})
+
+@login_required(login_url='/accounts/login/')
+def revenue_manager(request):
+	# all_customers = Customer.fetch_all_customers()
+	return render(request, 'admino/revenue_management/revenue_index.html',{})
