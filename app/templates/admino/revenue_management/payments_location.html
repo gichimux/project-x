@@ -10,35 +10,34 @@
 
       <!-- Main Content -->
       <div id="content">
-       
-       <div class="text-center">
-      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-           <h1 class="h5 mb-0 text-gray-800 text-center">homes per location</h1> <hr>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+           <h1 class="h5 mb-0 text-gray-800 text-center">Payments per location</h1> <hr>
          
         
                   </div>
-        </div>
-      	 <div class="text-center">
-             <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#myModal">
-                    <span class="icon text-white-90">
-                      <i class="fas fa-plus-square"></i>
+
+                    <div class="text-center">
+                   <a href="#" class="btn btn-success btn-icon-split">
+                
+                    <span class="text">Filter by date</span>    <span class="icon text-white-90">
+                      <i class="fas fa-calendar-alt"></i>
                     </span>
-                    <span class="text">Add new location</span>
-                  </a>    
-        </div><br>
+                  </a> 
+                </div><br>
       	 <!-- paid homes-->
       	    <div class="col-lg-6">
               
                <!-- projects in progress-->
-            <a href="{% url 'connected_per_location' %}">
+            <a href="{% url 'transactions_made' %}">
             <div class="col-xl-4 col-md-6 mb-4">
-              <div class="card border-left-primary shadow py-2">
+              <div class="card border-left-success shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Poh Building<br> 16 homes</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Main<br> 234 payments<br> Total: Ksh 12,000</div>
                        
                     </div>
+
 
                   </div>
                 </div>
@@ -48,15 +47,16 @@
 
            
 
-                       <a href="#">
+                       <a href="{% url 'payments_single_location'%}">
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-primary shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Kifaru Court<br> 23 homes</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Riverside Court<br> 13 payments<br> Total: Ksh 14,900</div>
                        
                     </div>
+                
 
                   </div>
                 </div>
@@ -66,15 +66,16 @@
 
             
 
-                       <a href="#">
+<a href="#">
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-primary shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Believers court<br> 23 homes</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">kifaru Court<br> 6 payments<br> Total: Ksh 1,000</div>
                        
                     </div>
+                
 
                   </div>
                 </div>
@@ -82,15 +83,16 @@
             </div>
           </a>
 
-                      <a href="#">
+                    <a href="#">
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-primary shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pah Building<br> 10 homes</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Blessed Court<br> 17 payments<br> Total: Ksh 12,000</div>
                        
                     </div>
+                
 
                   </div>
                 </div>
@@ -98,15 +100,16 @@
             </div>
           </a>
 
-                      <a href="#">
+                 <a href="#">
             <div class="col-xl-4 col-md-6 mb-4">
               <div class="card border-left-primary shadow py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Riverside Court<br> 24 homes</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">x Court<br> 10 payments<br> Total: Ksh 19,000</div>
                        
                     </div>
+                
 
                   </div>
                 </div>
@@ -115,30 +118,6 @@
           </a>
 
             </div>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title text-center">New reading</h4>
-        <button type="button" class="close" data-dismiss="modal">x</button>
-      </div>
-      <div class="modal-body">
-    <input type="text" class="form-control" aria-label="..." placeholder="location name"><br>
-      <button type="button" class="btn btn-success" data-dismiss="modal">save</button>
-
-    </div>      
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-
-</div>
 
         </div>
 

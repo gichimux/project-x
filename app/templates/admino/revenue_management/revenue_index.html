@@ -21,13 +21,13 @@
             <!-- projects completed -->
             
             <div class="col-xl-3 col-md-6 mb-4">
-              <a href="{% url 'homes_connected' %}">
-              <div class="card border-warning shadow h-100 py-2">
+              <a href="{% url 'transactions_made' %}">
+              <div class="card border-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Homes connected</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Transactions Made (today)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">400</div>
                     </div>
                    
@@ -41,14 +41,14 @@
 
           <!-- <a href="">         -->
            <div class="col-xl-3 col-md-6 mb-4">
-          <a href="{% url 'units_consumed' %}">
-              <div class="card border-warning shadow h-100 py-2">
+          <a href="{% url 'payments_location' %}">
+              <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Water Units Consumed</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">1400</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Payments made (today)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">Ksh 14,000</div>
                     </div>
                    
                   </div>
@@ -61,54 +61,52 @@
 
             <!-- projects in progress-->
             
-            <div class="col-xl-3 col-md-6 mb-4">
-              <a href="{% url 'revenue_manager' %}">
-              <div class="card border-left-primary shadow h-100 py-2">
+               <div class="col-xl-3 col-md-6 mb-4">
+          <a href="{% url 'pending_payments' %}">
+              <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Revenue Management</div>
-                      
+                      <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Pending payments (total)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">Ksh 78,000</div>
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-500"></i>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
-            </a>
             </div>
+          </a>
+          </div>
           
 
 
             <!-- Total spent -->
             
-           <div class="col-xl-3 col-md-6 mb-4">
-            <a href="{% url 'meter_readings' %}">
-              <div class="card border-left-primary shadow h-100 py-2">
+         <div class="col-xl-3 col-md-6 mb-4">
+          <a href="{% url 'units_consumed' %}">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Meter Readings</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-500"></i>
-                    </div>
+                      <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1 text-center">Total earnings (monthly)</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 text-center">Ksh 218,000</div>
+                    </div><br>
+                    <div class="text-center">
+                   <a href="#" class="btn btn-success btn-icon-split">
+                
+                    <span class="text">Filter by date</span>    <span class="icon text-white-90">
+                      <i class="fas fa-calendar-alt"></i>
+                    </span>
+                  </a> 
+                </div>
                   </div>
                 </div>
               </div>
-            </a>
             </div>
+          </a>
+          </div>
          
         
         
@@ -119,14 +117,7 @@
          
               </div>
 
-               <div class="text-center">
-                   <a href="{% url 'location_readings'%}" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-90">
-                      <i class="fas fa-eye"></i>
-                    </span>
-                    <span class="text">View transactions</span>
-                  </a> 
-                </div><br>
+             <br>
 </div>
                  
 {% endblock %}

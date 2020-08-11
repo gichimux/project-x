@@ -31,7 +31,7 @@
                        
                     </div>
                     <div class="col ">
-                       <a href="#" class="btn btn-success">
+                       <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     
                     <span class="text">Read</span>
                   </a>
@@ -137,6 +137,30 @@
             </div>
 
         </div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">New reading</h4>
+        <button type="button" class="close" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+    <input type="number" class="form-control" aria-label="..." placeholder="new reading"><br>
+      <button type="button" class="btn btn-success" data-dismiss="modal">save</button>
+
+    </div>      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 
   </div>
   </div>

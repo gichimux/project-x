@@ -6,7 +6,7 @@
 	</head>
 	<body>
 
-
+{% comment %} 
         <form class="navbar-form" role="search" action="{% url 'search_results' %}">
  
           <div class="input-group">
@@ -16,18 +16,18 @@
             </div>
           </div>
 
-        </form>
+        </form> {% endcomment %}
         <button><a href="{% url 'demo_admin_index'%}">Admin demo</a></button>
         <button><a href="{% url 'user_index'%}">User demo</a></button>
 		
-		<button><a href="{% url 'add_location'%}">Add Location</a></button>
+		{% comment %} <button><a href="{% url 'add_location'%}">Add Location</a></button> {% endcomment %}
 
-		<button ><a href="{% url 'add_customer' %}">customer bills</a></button>
-		<button ><a href="{% url 'all_customers' %}">all customers</a></button>
-		{% for location in locations %}
+		{% comment %} <button ><a href="{% url 'add_customer' %}">customer bills</a></button> {% endcomment %}
+		{% comment %} <button ><a href="{% url 'all_customers' %}">all customers</a></button> {% endcomment %}
+		{% comment %} {% for location in locations %}
 		<a href="{% url 'customer_in_location' location.pk %}">
 		{{location.house_name}}</a>
 
-		{% endfor %}
+		{% endfor %} {% endcomment %}
 	</body>
 </html>

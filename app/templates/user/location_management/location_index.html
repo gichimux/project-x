@@ -11,8 +11,9 @@
       <!-- Main Content -->
       <div id="content">
 
+
       	 <div class="text-center">
-             <a href="#" class="btn btn-primary btn-icon-split">
+             <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#myModal">
                     <span class="icon text-white-90">
                       <i class="fas fa-plus-square"></i>
                     </span>
@@ -140,8 +141,31 @@
             </div>
 
         </div>
+  
+  <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">New location</h4>
+        <button type="button" class="close" data-dismiss="modal">x</button>
+      </div>
+      <div class="modal-body">
+    <input type="text" class="form-control" aria-label="..." placeholder="location name"><br>
+      <button type="button" class="btn btn-success" data-dismiss="modal">save</button>
+
+    </div>      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
   </div>
+</div>
+
+</div>
   </div>
      	
 
